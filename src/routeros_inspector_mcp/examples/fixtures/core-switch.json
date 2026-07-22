@@ -1,0 +1,183 @@
+{
+  "_provenance": {
+    "contains_live_data": false,
+    "sanitized": true,
+    "source": "purpose-built synthetic fixture"
+  },
+  "address_lists": [],
+  "arp": [],
+  "backup_info": [
+    {
+      "created": "2099-01-01T00:00:00Z",
+      "name": "synthetic-backup-a.backup"
+    },
+    {
+      "created": "2099-01-02T00:00:00Z",
+      "name": "synthetic-backup-b.backup"
+    }
+  ],
+  "bridge_ports": [
+    {
+      "bridge": "bridge",
+      "disabled": false,
+      "edge": "auto",
+      "frame_types": "admit-only-vlan-tagged",
+      "interface": "sfp-router",
+      "pvid": 1
+    },
+    {
+      "bridge": "bridge",
+      "disabled": false,
+      "edge": "auto",
+      "frame_types": "admit-only-vlan-tagged",
+      "interface": "sfp-access",
+      "pvid": 1
+    },
+    {
+      "bridge": "bridge",
+      "disabled": false,
+      "edge": "auto",
+      "frame_types": "admit-only-vlan-tagged",
+      "interface": "sfp-branch",
+      "pvid": 1
+    },
+    {
+      "bridge": "bridge",
+      "disabled": false,
+      "edge": true,
+      "frame_types": "admit-only-untagged-and-priority-tagged",
+      "interface": "ether2-client",
+      "pvid": 10
+    },
+    {
+      "bridge": "bridge",
+      "disabled": false,
+      "edge": true,
+      "frame_types": "admit-only-untagged-and-priority-tagged",
+      "interface": "ether3-client",
+      "pvid": 20
+    }
+  ],
+  "bridge_vlans": [
+    {
+      "bridge": "bridge",
+      "disabled": false,
+      "dynamic": false,
+      "tagged": "bridge,sfp-router,sfp-access,sfp-branch",
+      "untagged": "ether2-client",
+      "vlan_ids": 10
+    },
+    {
+      "bridge": "bridge",
+      "disabled": false,
+      "dynamic": false,
+      "tagged": "bridge,sfp-router,sfp-access,sfp-branch",
+      "untagged": "ether3-client",
+      "vlan_ids": 20
+    },
+    {
+      "bridge": "bridge",
+      "disabled": false,
+      "dynamic": false,
+      "tagged": "bridge,sfp-router,sfp-access,sfp-branch",
+      "untagged": "",
+      "vlan_ids": 30
+    }
+  ],
+  "dhcp_leases": [],
+  "dhcp_servers": [],
+  "dns_config": {
+    "dns_over_https": "",
+    "dnssec": false,
+    "servers": "192.0.2.53",
+    "use_dns_servers": true
+  },
+  "firewall_filter": [],
+  "firewall_mangle": [],
+  "firewall_nat": [],
+  "firmware_version": "7.20.0",
+  "interfaces": [
+    {
+      "disabled": false,
+      "name": "sfp-router",
+      "running": true,
+      "type": "ether"
+    },
+    {
+      "disabled": false,
+      "name": "sfp-access",
+      "running": true,
+      "type": "ether"
+    },
+    {
+      "disabled": false,
+      "name": "sfp-branch",
+      "running": true,
+      "type": "ether"
+    },
+    {
+      "disabled": false,
+      "name": "ether2-client",
+      "running": true,
+      "type": "ether"
+    },
+    {
+      "disabled": false,
+      "name": "ether3-client",
+      "running": true,
+      "type": "ether"
+    }
+  ],
+  "ip_services": [
+    {
+      "address": "192.0.2.0/24",
+      "disabled": false,
+      "name": "ssh",
+      "port": 22
+    },
+    {
+      "address": "192.0.2.0/24",
+      "disabled": false,
+      "name": "api-ssl",
+      "port": 8729
+    }
+  ],
+  "qos_queues": [],
+  "queue_tree": [],
+  "queue_types": [],
+  "recent_logs": [],
+  "routes": [
+    {
+      "disabled": false,
+      "distance": 1,
+      "dst_address": "0.0.0.0/0",
+      "gateway": "192.0.2.1"
+    },
+    {
+      "disabled": false,
+      "distance": 0,
+      "dst_address": "192.0.2.0/24",
+      "gateway": "bridge"
+    }
+  ],
+  "routing_rules": [],
+  "routing_tables": [
+    {
+      "disabled": false,
+      "fib": true,
+      "name": "main"
+    }
+  ],
+  "snmp_config": {
+    "allowed_addresses": "192.0.2.10/32",
+    "community": "***REDACTED***"
+  },
+  "system_summary": {
+    "board_name": "synthetic-routeros",
+    "device_id_hint": "core-switch",
+    "name": "core-switch",
+    "version": "7.20.0"
+  },
+  "wireguard_interfaces": [],
+  "wireguard_peers": []
+}

@@ -1,0 +1,39 @@
+# Synthetic example inventory. Copy to config/devices.yaml and replace every value.
+# The checked-in fixtures use these IDs and never open network connections.
+
+devices:
+  edge-router:
+    role: gateway
+    risk: critical
+    host: 192.0.2.1
+    transport: fixture
+    credential_ref: example:edge-router
+    allowed: true
+    tags: [wan, dual-wan, firewall]
+
+  core-switch:
+    role: switch
+    risk: high
+    host: 192.0.2.2
+    transport: fixture
+    credential_ref: example:core-switch
+    allowed: true
+    tags: [core, aggregation]
+
+  access-switch:
+    role: switch
+    risk: medium
+    host: 192.0.2.3
+    transport: fixture
+    credential_ref: example:access-switch
+    allowed: true
+    tags: [access]
+
+  branch-switch:
+    role: switch
+    risk: medium
+    host: 192.0.2.4
+    transport: fixture
+    credential_ref: example:branch-switch
+    allowed: true
+    tags: [branch]

@@ -1,0 +1,55 @@
+# Synthetic policy matching the checked-in fixtures.
+# Copy to config/policy.yaml and replace every value with verified intended state.
+
+firmware:
+  expected_versions:
+    edge-router: "7.20"
+    core-switch: "7.20"
+    access-switch: "7.20"
+    branch-switch: "7.20"
+
+snmp:
+  community_policy: secret_store
+  allowed_communities: []
+  allowed_access:
+    - "192.0.2.10/32"
+
+stp:
+  edge_ports:
+    core-switch: [ether2-client, ether3-client]
+    access-switch: [ether2-client, ether3-client]
+    branch-switch: [ether2-client, ether3-client]
+
+vlans:
+  expected_vlans:
+    edge-router: [10, 20]
+    core-switch: [10, 20, 30]
+    access-switch: [10, 20, 30]
+    branch-switch: [10, 20]
+  expected_trunks:
+    edge-router:
+      sfp-core: [10, 20]
+    core-switch:
+      sfp-router: [10, 20, 30]
+      sfp-access: [10, 20, 30]
+      sfp-branch: [10, 20, 30]
+    access-switch:
+      sfp-core: [10, 20, 30]
+    branch-switch:
+      sfp-core: [10, 20]
+
+routes:
+  owned_prefixes:
+    edge-router:
+      - "0.0.0.0/0"
+      - "192.0.2.0/24"
+    core-switch:
+      - "0.0.0.0/0"
+      - "192.0.2.0/24"
+
+wan_failover:
+  primary: wan-primary
+  secondary: wan-backup
+
+dns:
+  encrypted: false

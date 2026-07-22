@@ -1,0 +1,274 @@
+{
+  "_provenance": {
+    "contains_live_data": false,
+    "sanitized": true,
+    "source": "purpose-built synthetic fixture"
+  },
+  "address_lists": [
+    {
+      "address": "192.0.2.10",
+      "comment": "synthetic collector",
+      "disabled": false,
+      "list": "monitoring"
+    }
+  ],
+  "arp": [
+    {
+      "complete": true,
+      "dynamic": true,
+      "interface": "vlan10",
+      "ip_address": "192.0.2.100",
+      "mac_address": "***REDACTED***"
+    }
+  ],
+  "backup_info": [
+    {
+      "created": "2099-01-01T00:00:00Z",
+      "name": "synthetic-backup-a.backup"
+    },
+    {
+      "created": "2099-01-02T00:00:00Z",
+      "name": "synthetic-backup-b.backup"
+    }
+  ],
+  "bridge_ports": [
+    {
+      "bridge": "bridge",
+      "disabled": false,
+      "edge": "auto",
+      "frame_types": "admit-only-vlan-tagged",
+      "interface": "sfp-core",
+      "pvid": 1
+    },
+    {
+      "bridge": "bridge",
+      "disabled": false,
+      "edge": true,
+      "frame_types": "admit-only-untagged-and-priority-tagged",
+      "interface": "ether2-client",
+      "pvid": 10
+    },
+    {
+      "bridge": "bridge",
+      "disabled": false,
+      "edge": true,
+      "frame_types": "admit-only-untagged-and-priority-tagged",
+      "interface": "ether3-client",
+      "pvid": 20
+    }
+  ],
+  "bridge_vlans": [
+    {
+      "bridge": "bridge",
+      "disabled": false,
+      "dynamic": false,
+      "tagged": "bridge,sfp-core",
+      "untagged": "ether2-client",
+      "vlan_ids": 10
+    },
+    {
+      "bridge": "bridge",
+      "disabled": false,
+      "dynamic": false,
+      "tagged": "bridge,sfp-core",
+      "untagged": "ether3-client",
+      "vlan_ids": 20
+    }
+  ],
+  "dhcp_leases": [
+    {
+      "host_name": "example-client",
+      "ip_address": "192.0.2.100",
+      "mac_address": "***REDACTED***",
+      "status": "bound"
+    }
+  ],
+  "dhcp_servers": [
+    {
+      "disabled": false,
+      "interface": "vlan10",
+      "name": "dhcp-example"
+    }
+  ],
+  "dns_config": {
+    "dns_over_https": "",
+    "dnssec": false,
+    "servers": "192.0.2.53",
+    "use_dns_servers": true
+  },
+  "firewall_filter": [
+    {
+      "action": "accept",
+      "chain": "forward",
+      "comment": "synthetic established traffic",
+      "disabled": false
+    }
+  ],
+  "firewall_mangle": [
+    {
+      "action": "change-dscp",
+      "chain": "prerouting",
+      "comment": "WAN DSCP wash",
+      "disabled": false,
+      "in_interface": "ether1-WAN-primary",
+      "new_dscp": 0
+    },
+    {
+      "action": "change-dscp",
+      "chain": "prerouting",
+      "comment": "IoT DSCP wash",
+      "disabled": false,
+      "in_interface": "vlan20-iot",
+      "new_dscp": 0
+    },
+    {
+      "action": "mark-connection",
+      "chain": "prerouting",
+      "comment": "synthetic voice classifier",
+      "disabled": false,
+      "new_connection_mark": "voice_conn"
+    },
+    {
+      "action": "change-dscp",
+      "chain": "prerouting",
+      "comment": "set voice DSCP",
+      "connection_mark": "voice_conn",
+      "disabled": false,
+      "new_dscp": 46
+    },
+    {
+      "action": "accept",
+      "chain": "prerouting",
+      "comment": "Trust voice DSCP",
+      "disabled": false,
+      "dscp": 46,
+      "in_interface": "vlan10-trusted"
+    },
+    {
+      "action": "change-dscp",
+      "chain": "prerouting",
+      "comment": "synthetic disabled DSCP example",
+      "disabled": true,
+      "new_dscp": 8
+    }
+  ],
+  "firewall_nat": [
+    {
+      "action": "masquerade",
+      "chain": "srcnat",
+      "disabled": false,
+      "out_interface": "ether1-WAN-primary"
+    }
+  ],
+  "firmware_version": "7.20.0",
+  "interfaces": [
+    {
+      "disabled": false,
+      "name": "ether1-WAN-primary",
+      "running": true,
+      "type": "ether"
+    },
+    {
+      "disabled": false,
+      "name": "ether2-WAN-backup",
+      "running": true,
+      "type": "ether"
+    },
+    {
+      "disabled": false,
+      "name": "sfp-core",
+      "running": true,
+      "type": "ether"
+    },
+    {
+      "disabled": false,
+      "name": "ether2-client",
+      "running": true,
+      "type": "ether"
+    },
+    {
+      "disabled": false,
+      "name": "ether3-client",
+      "running": true,
+      "type": "ether"
+    }
+  ],
+  "ip_services": [
+    {
+      "address": "192.0.2.0/24",
+      "disabled": false,
+      "name": "ssh",
+      "port": 22
+    },
+    {
+      "address": "192.0.2.0/24",
+      "disabled": false,
+      "name": "api-ssl",
+      "port": 8729
+    }
+  ],
+  "qos_queues": [],
+  "queue_tree": [],
+  "queue_types": [],
+  "recent_logs": [
+    {
+      "message": "synthetic fixture event",
+      "time": "00:00:00",
+      "topics": "system,info"
+    }
+  ],
+  "routes": [
+    {
+      "disabled": false,
+      "distance": 1,
+      "dst_address": "0.0.0.0/0",
+      "gateway": "198.51.100.1"
+    },
+    {
+      "disabled": false,
+      "distance": 2,
+      "dst_address": "0.0.0.0/0",
+      "gateway": "203.0.113.1"
+    },
+    {
+      "disabled": false,
+      "distance": 0,
+      "dst_address": "192.0.2.0/24",
+      "gateway": "bridge"
+    }
+  ],
+  "routing_rules": [],
+  "routing_tables": [
+    {
+      "disabled": false,
+      "fib": true,
+      "name": "main"
+    }
+  ],
+  "snmp_config": {
+    "allowed_addresses": "192.0.2.10/32",
+    "community": "***REDACTED***"
+  },
+  "system_summary": {
+    "board_name": "synthetic-routeros",
+    "device_id_hint": "edge-router",
+    "name": "edge-router",
+    "version": "7.20.0"
+  },
+  "wireguard_interfaces": [
+    {
+      "listen_port": 51820,
+      "name": "wg-example",
+      "private_key": "***REDACTED***",
+      "public_key": "***REDACTED***"
+    }
+  ],
+  "wireguard_peers": [
+    {
+      "allowed_address": "192.0.2.200/32",
+      "interface": "wg-example",
+      "preshared_key": "***REDACTED***",
+      "public_key": "***REDACTED***"
+    }
+  ]
+}

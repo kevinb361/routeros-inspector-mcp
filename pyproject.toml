@@ -1,0 +1,62 @@
+[project]
+name = "routeros-inspector-mcp"
+version = "0.3.0"
+description = "Unofficial read-only MCP server for MikroTik RouterOS inspection and policy-backed audits"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+keywords = ["mcp", "mikrotik", "routeros", "network-automation", "security-audit"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: System :: Networking",
+]
+dependencies = [
+    "fastmcp>=2.0.0",
+    "pydantic>=2.0.0",
+    "pyyaml>=6.0",
+    "librouteros>=1.0",
+]
+
+[project.scripts]
+routeros-inspector = "routeros_inspector_mcp.cli:main"
+
+[project.optional-dependencies]
+test = [
+    "cryptography>=42.0",
+    "pytest>=7.0",
+    "pytest-xdist>=3.0",
+    "ruff",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 99
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "W",   # pycodestyle warnings
+    "I",   # isort
+    "UP",  # pyupgrade
+]
+ignore = [
+    "E501",  # line length handled by formatter
+]
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+routeros_inspector_mcp = ["examples/*.yaml", "examples/fixtures/*.json"]
