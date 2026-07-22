@@ -16,7 +16,7 @@ The server is fixture-only by default. Live access requires an explicit `--live`
 - Bounded audit fan-out
 - Stdio by default; optional HTTP is forced to `127.0.0.1`
 
-See [docs/deployment.md](docs/deployment.md) for the complete deployment boundary.
+See [docs/deployment.md](docs/deployment.md) for the complete deployment boundary and [CHANGELOG.md](CHANGELOG.md) for release history.
 
 ## Requirements
 
